@@ -63,19 +63,15 @@ function step(cell: number): void {
     // При выполнении хода нужно заполнить соответствующие элементы
     //  массивов board и buttons, затем проверить, на закончилась ли игра
     //  и, если игра закончилась, обновить переменные gameOver и info.
-    
-    getTurn()
-
+   
     isRightMove(cell, board)
     if (isRightMove(cell, board) == true) {
         board[cell] = getTurn()
-        buttons[cell].textContent = getTurn()
+        buttons[cell].textContent = board[cell]
     }
     checkWin(board)
     if (checkWin(board) != "_") {
-        getTurn()
-        info.textContent = `Win ${getTurn()}`
-        //info.textContent = `Win ${checkWin(board)}`
+        info.textContent = `Win ${checkWin(board)}`
         isFill(board) == true
         gameOver = true
     }
@@ -83,8 +79,5 @@ function step(cell: number): void {
     if (isFill(board) == true) {
         gameOver = true
         info.textContent = "Game_Over"
-    }
-    //getTurn() 
-    
-    
+    }  
 }
