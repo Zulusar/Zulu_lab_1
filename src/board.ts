@@ -51,7 +51,7 @@ function getLineChar(line: number[], board: string[]): string[] {
     return [board[line[0]], board[line[1]], board[line[2]]]
 }
 
-let data = "_"
+
 
 export function checkWin(board: string[]): string {
     // TODO
@@ -59,17 +59,13 @@ export function checkWin(board: string[]): string {
     //  из трех одинаковых символов, находящихся на одной линии.
     // В случае наличия такой комбинации функция должна вернуть
     //  X или 0 соответственно, иначе нужно вернуть _.
-    //let count = 0
-    
-    for (let i = 0; i < winPos.length; i++) {
-        if (board[winPos[i][0]] === board[winPos[i][1]] && board[winPos[i][1]] === board[winPos[i][2]]) {
-            //count++
-            data = board[winPos[i][0]]
-            break
+    let data = "_"
+        for(let i = 0; i < winPos.length; i++){
+            if (getLineChar(winPos[i],board)[0] == getLineChar(winPos[i],board)[1]  && getLineChar(winPos[i],board)[0] == getLineChar(winPos[i],board)[2]&& getLineChar(winPos[i],board)[0] != "_") {
+                data = getLineChar(winPos[i],board)[0]
+                break
+            }
+            else  data = "_"   
         }
-        //else count == 0
-        else data = "_"
+        return data
     }
-    if (data != "_") return data
-    else return "_"
-}
