@@ -67,7 +67,7 @@ function step(cell: number): void {
     
     if (isRightMove(cell, board) == true) {
         board[cell] = getTurn()
-        buttons[cell].textContent = board[cell]
+        buttons[cell].textContent = getTurn()
     }
 
     if (checkWin(board) != "_") {
@@ -78,7 +78,15 @@ function step(cell: number): void {
     if (isFill(board) == true) {
         gameOver == true
         info.textContent = "Game_Over"
-    } 
-    
+    }
+    //getTurn() 
+    checkWin(board)
+    if (checkWin(board) != "_") {
+        //getTurn()
+        info.textContent = `Win ${getTurn()}`
+        //info.textContent = `Win ${checkWin(board)}`
+        isFill(board) == true
+        gameOver = true
+    }
     
 }
